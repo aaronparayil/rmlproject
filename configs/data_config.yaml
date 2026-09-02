@@ -1,0 +1,65 @@
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  splits:
+    train: train.tsv
+    valid: valid.tsv
+    test: test.tsv
+  columns:
+  - id
+  - label
+  - statement
+  - subject
+  - speaker
+  - job_title
+  - state
+  - party
+  - barely_true_c
+  - false_c
+  - half_true_c
+  - mostly_true_c
+  - pants_fire_c
+  - context
+  core_columns:
+  - label
+  - statement
+  - party
+  - barely_true_c
+  - false_c
+  - half_true_c
+  - mostly_true_c
+  - pants_fire_c
+  count_columns:
+  - barely_true_c
+  - false_c
+  - half_true_c
+  - mostly_true_c
+  - pants_fire_c
+  label_mapping:
+    pants-fire: 0
+    'false': 1
+    barely-true: 2
+    half-true: 3
+    mostly-true: 4
+    'true': 5
+  binary_threshold:
+    true_labels:
+    - mostly-true
+    - 'true'
+  credibility_weights:
+    barely_true_c: -1.0
+    false_c: -2.0
+    half_true_c: 0.5
+    mostly_true_c: 1.0
+    pants_fire_c: -3.0
+  scale_features:
+  - barely_true_c
+  - false_c
+  - half_true_c
+  - mostly_true_c
+  - pants_fire_c
+  - statement_char_len
+  - statement_word_count
+  - avg_word_length
+  - total_history_count
+  - credibility_score

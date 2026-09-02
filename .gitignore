@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDEs
+.vscode/
+.idea/
+
+# Artifacts & Outputs
+logs/
+checkpoints/
+data/processed/*.parquet
+!data/processed/.gitkeep
+experiments/results/
+
+# OS
+desktop.ini
+Thumbs.db
+.DS_Store

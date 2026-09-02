@@ -1,0 +1,46 @@
+﻿baseline_experiment:
+  seed: 42
+  text_column: "statement"
+  tfidf:
+    max_features: 5000
+    ngram_range: [1, 2]
+    sublinear_tf: true
+    min_df: 2
+    max_df: 0.95
+    stop_words: "english"
+  numeric_features:
+    - "barely_true_c_zscore"
+    - "false_c_zscore"
+    - "half_true_c_zscore"
+    - "mostly_true_c_zscore"
+    - "pants_fire_c_zscore"
+    - "credibility_score_zscore"
+    - "total_history_count_zscore"
+    - "statement_char_len_zscore"
+    - "statement_word_count_zscore"
+    - "avg_word_length_zscore"
+  categorical_features:
+    - "party"
+    - "state"
+  models:
+    logistic_regression:
+      max_iter: 1000
+      C: 1.0
+      solver: "lbfgs"
+    linear_svc:
+      max_iter: 2000
+      C: 1.0
+    sgd_classifier:
+      loss: "modified_huber"
+      max_iter: 1000
+      alpha: 0.0001
+    multinomial_nb:
+      alpha: 1.0
+    random_forest:
+      n_estimators: 100
+      max_depth: 25
+      n_jobs: -1
+    extra_trees:
+      n_estimators: 100
+      max_depth: 25
+      n_jobs: -1
