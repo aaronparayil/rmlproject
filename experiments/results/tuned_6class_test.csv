@@ -1,0 +1,19 @@
+task,feature_mode,model,variant,char_ngrams,params,val_acc,test_acc,test_f1_macro,test_f1_weighted
+6class,hybrid,sgd_classifier,speaker,True,"{""alpha"": 0.001, ""loss"": ""log_loss""}",0.2975,0.2845,0.2763,0.2763
+6class,hybrid,linear_svc,speaker,True,"{""C"": 0.01, ""class_weight"": null}",0.3037,0.2767,0.2646,0.2655
+6class,hybrid,multinomial_nb,speaker_subject,True,"{""alpha"": 1.0}",0.2897,0.2759,0.2651,0.2669
+6class,hybrid,logistic_regression,speaker,True,"{""C"": 0.1, ""class_weight"": null}",0.3053,0.2751,0.2672,0.2663
+6class,hybrid,extra_trees,base,False,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 3}",0.3014,0.2751,0.2599,0.2621
+6class,hybrid,random_forest,speaker,True,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 1}",0.3069,0.2736,0.258,0.262
+6class,metadata_only,linear_svc,speaker_subject,False,"{""C"": 0.01, ""class_weight"": null}",0.2796,0.2744,0.2599,0.2611
+6class,metadata_only,sgd_classifier,speaker,False,"{""alpha"": 0.001, ""loss"": ""log_loss""}",0.2765,0.2595,0.2451,0.2431
+6class,metadata_only,multinomial_nb,all_meta,False,"{""alpha"": 2.0}",0.2757,0.258,0.2383,0.2382
+6class,metadata_only,random_forest,all_meta,False,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 3}",0.2835,0.2557,0.2232,0.2248
+6class,metadata_only,logistic_regression,speaker,False,"{""C"": 0.1, ""class_weight"": null}",0.2804,0.2557,0.2396,0.2398
+6class,metadata_only,extra_trees,all_meta,False,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 3}",0.271,0.2455,0.2228,0.2232
+6class,text_only,extra_trees,base,True,"{""n_estimators"": 300, ""max_depth"": 30, ""min_samples_leaf"": 1}",0.2741,0.2705,0.2209,0.243
+6class,text_only,random_forest,base,True,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 3}",0.2726,0.2619,0.2207,0.245
+6class,text_only,logistic_regression,base,True,"{""C"": 0.1, ""class_weight"": null}",0.2508,0.2541,0.2059,0.2333
+6class,text_only,multinomial_nb,base,True,"{""alpha"": 0.5}",0.2617,0.2518,0.2298,0.2459
+6class,text_only,sgd_classifier,base,True,"{""alpha"": 0.001, ""loss"": ""log_loss""}",0.2508,0.251,0.2001,0.2276
+6class,text_only,linear_svc,base,False,"{""C"": 0.01, ""class_weight"": null}",0.2523,0.2338,0.1703,0.1972

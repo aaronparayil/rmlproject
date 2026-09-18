@@ -11,6 +11,9 @@ venv/
 # Jupyter
 .ipynb_checkpoints/
 
+# Testing
+.pytest_cache/
+
 # IDEs
 .vscode/
 .idea/
@@ -20,7 +23,24 @@ logs/
 checkpoints/
 data/processed/*.parquet
 !data/processed/.gitkeep
-experiments/results/
+
+# Regenerable: concatenation of the three processed splits (prepare_data.py)
+data/processed/liar_full_processed.csv
+
+# Results are tracked (the README links to them), except the raw tuning
+# search traces, which are large, noisy and regenerable via tune_baselines.py
+experiments/results/tuning_*.json
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.synctex.gz
+*.toc
 
 # OS
 desktop.ini

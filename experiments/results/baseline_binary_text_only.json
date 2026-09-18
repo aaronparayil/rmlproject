@@ -1,0 +1,80 @@
+[
+  {
+    "model": "Logistic Regression",
+    "task": "binary",
+    "feature_mode": "text_only",
+    "val_acc": 0.6199,
+    "val_f1_macro": 0.6103,
+    "val_f1_weighted": 0.6128,
+    "test_acc": 0.6142,
+    "test_f1_macro": 0.5906,
+    "test_f1_weighted": 0.6037,
+    "val_f1_positive": 0.6716,
+    "test_f1_positive": 0.6889
+  },
+  {
+    "model": "Linear SVM",
+    "task": "binary",
+    "feature_mode": "text_only",
+    "val_acc": 0.5631,
+    "val_f1_macro": 0.56,
+    "val_f1_weighted": 0.5615,
+    "test_acc": 0.6041,
+    "test_f1_macro": 0.591,
+    "test_f1_weighted": 0.6008,
+    "val_f1_positive": 0.5967,
+    "test_f1_positive": 0.664
+  },
+  {
+    "model": "SGD Classifier",
+    "task": "binary",
+    "feature_mode": "text_only",
+    "val_acc": 0.56,
+    "val_f1_macro": 0.5576,
+    "val_f1_weighted": 0.5589,
+    "test_acc": 0.6017,
+    "test_f1_macro": 0.5892,
+    "test_f1_weighted": 0.5988,
+    "val_f1_positive": 0.5897,
+    "test_f1_positive": 0.6609
+  },
+  {
+    "model": "Multinomial Naive Bayes",
+    "task": "binary",
+    "feature_mode": "text_only",
+    "val_acc": 0.6145,
+    "val_f1_macro": 0.6006,
+    "val_f1_weighted": 0.6037,
+    "test_acc": 0.6087,
+    "test_f1_macro": 0.5797,
+    "test_f1_weighted": 0.5944,
+    "val_f1_positive": 0.675,
+    "test_f1_positive": 0.6901
+  },
+  {
+    "model": "Random Forest",
+    "task": "binary",
+    "feature_mode": "text_only",
+    "val_acc": 0.5779,
+    "val_f1_macro": 0.4951,
+    "val_f1_weighted": 0.5033,
+    "test_acc": 0.5939,
+    "test_f1_macro": 0.4783,
+    "test_f1_weighted": 0.511,
+    "val_f1_positive": 0.6996,
+    "test_f1_positive": 0.7239
+  },
+  {
+    "model": "Extra Trees",
+    "task": "binary",
+    "feature_mode": "text_only",
+    "val_acc": 0.5498,
+    "val_f1_macro": 0.4354,
+    "val_f1_weighted": 0.4457,
+    "test_acc": 0.5931,
+    "test_f1_macro": 0.4532,
+    "test_f1_weighted": 0.4901,
+    "val_f1_positive": 0.6896,
+    "test_f1_positive": 0.7298
+  }
+]

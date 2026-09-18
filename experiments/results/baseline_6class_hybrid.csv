@@ -1,0 +1,7 @@
+model,task,feature_mode,val_acc,val_f1_macro,val_f1_weighted,test_acc,test_f1_macro,test_f1_weighted
+Logistic Regression,6class,hybrid,0.2734,0.2774,0.2729,0.2611,0.2557,0.2589
+Linear SVM,6class,hybrid,0.2461,0.2492,0.2462,0.2424,0.2425,0.2422
+SGD Classifier,6class,hybrid,0.2282,0.2315,0.2273,0.233,0.232,0.2317
+Multinomial Naive Bayes,6class,hybrid,0.2882,0.2886,0.2821,0.2837,0.2773,0.2763
+Random Forest,6class,hybrid,0.2905,0.2548,0.2557,0.2502,0.2106,0.2136
+Extra Trees,6class,hybrid,0.2687,0.2474,0.2442,0.2588,0.2186,0.2249

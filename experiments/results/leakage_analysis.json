@@ -1,0 +1,40 @@
+{
+  "structure": {
+    "speakers": 3318,
+    "speakers_with_constant_counts": 3314,
+    "speakers_matching_full_corpus_histogram": 2846,
+    "speakers_compared": 2947
+  },
+  "self_inclusion": {
+    "single_statement_speakers_non_true": 1701,
+    "encoding_own_label_as_one_hot": 1689,
+    "single_statement_speakers_true": 355,
+    "true_speakers_with_zero_counts": 355
+  },
+  "naive_repair_decodability": {
+    "distinct_count_vectors": 392,
+    "speakers": 3318,
+    "test_rows": 1283,
+    "label_recovered_exactly": 464,
+    "share_recovered_exactly": 0.3617,
+    "mean_candidate_set_size": 3.61
+  },
+  "history_only_rf_6class": {
+    "leaky_raw_counts": {
+      "test_acc": 0.3944,
+      "test_f1_macro": 0.4056
+    },
+    "naive_subtract_own_label": {
+      "test_acc": 0.6594,
+      "test_f1_macro": 0.6633
+    },
+    "leak_free_oof_history": {
+      "test_acc": 0.2284,
+      "test_f1_macro": 0.2236
+    },
+    "majority_class": {
+      "test_acc": 0.2081,
+      "test_f1_macro": null
+    }
+  }
+}

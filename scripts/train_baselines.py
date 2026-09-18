@@ -106,6 +106,9 @@ def main():
             "test_f1_macro": round(test_metrics["f1_macro"], 4),
             "test_f1_weighted": round(test_metrics["f1_weighted"], 4)
         }
+        if is_binary:
+            row["val_f1_positive"] = round(val_metrics["f1_positive"], 4)
+            row["test_f1_positive"] = round(test_metrics["f1_positive"], 4)
         results.append(row)
         logger.info(f"    [{model.model_name}] Val Acc: {row['val_acc']:.4f} | Val F1-Macro: {row['val_f1_macro']:.4f} | Test Acc: {row['test_acc']:.4f} | Test F1-Macro: {row['test_f1_macro']:.4f}")
 

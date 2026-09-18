@@ -1,0 +1,68 @@
+[
+  {
+    "model": "Logistic Regression",
+    "task": "6class",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.2586,
+    "val_f1_macro": 0.2616,
+    "val_f1_weighted": 0.2544,
+    "test_acc": 0.2751,
+    "test_f1_macro": 0.2704,
+    "test_f1_weighted": 0.2692
+  },
+  {
+    "model": "Linear SVM",
+    "task": "6class",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.2547,
+    "val_f1_macro": 0.2591,
+    "val_f1_weighted": 0.251,
+    "test_acc": 0.2712,
+    "test_f1_macro": 0.2663,
+    "test_f1_weighted": 0.2643
+  },
+  {
+    "model": "SGD Classifier",
+    "task": "6class",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.2251,
+    "val_f1_macro": 0.231,
+    "val_f1_weighted": 0.2194,
+    "test_acc": 0.2229,
+    "test_f1_macro": 0.2204,
+    "test_f1_weighted": 0.2134
+  },
+  {
+    "model": "Multinomial Naive Bayes",
+    "task": "6class",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.2593,
+    "val_f1_macro": 0.2636,
+    "val_f1_weighted": 0.255,
+    "test_acc": 0.2362,
+    "test_f1_macro": 0.2351,
+    "test_f1_weighted": 0.2293
+  },
+  {
+    "model": "Random Forest",
+    "task": "6class",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.2695,
+    "val_f1_macro": 0.2694,
+    "val_f1_weighted": 0.2654,
+    "test_acc": 0.244,
+    "test_f1_macro": 0.2349,
+    "test_f1_weighted": 0.2339
+  },
+  {
+    "model": "Extra Trees",
+    "task": "6class",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.2656,
+    "val_f1_macro": 0.2658,
+    "val_f1_weighted": 0.2615,
+    "test_acc": 0.2416,
+    "test_f1_macro": 0.2329,
+    "test_f1_weighted": 0.2326
+  }
+]

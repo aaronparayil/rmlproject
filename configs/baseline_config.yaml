@@ -8,14 +8,20 @@
     min_df: 2
     max_df: 0.95
     stop_words: "english"
+  # Leakage-free numeric features. The raw LIAR credit-history counts
+  # (barely_true_c ... pants_fire_c) are excluded by design: they include the
+  # current statement's own label and aggregate over the held-out splits.
+  # See src/features/credit_history.py.
   numeric_features:
-    - "barely_true_c_zscore"
-    - "false_c_zscore"
-    - "half_true_c_zscore"
-    - "mostly_true_c_zscore"
-    - "pants_fire_c_zscore"
+    - "hist_p_pants_fire_zscore"
+    - "hist_p_false_zscore"
+    - "hist_p_barely_true_zscore"
+    - "hist_p_half_true_zscore"
+    - "hist_p_mostly_true_zscore"
+    - "hist_p_true_zscore"
     - "credibility_score_zscore"
-    - "total_history_count_zscore"
+    - "speaker_history_log_size_zscore"
+    - "speaker_is_unseen"
     - "statement_char_len_zscore"
     - "statement_word_count_zscore"
     - "avg_word_length_zscore"

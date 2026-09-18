@@ -1,0 +1,80 @@
+[
+  {
+    "model": "Logistic Regression",
+    "task": "binary",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.6067,
+    "val_f1_macro": 0.5905,
+    "val_f1_weighted": 0.5938,
+    "test_acc": 0.6485,
+    "test_f1_macro": 0.6264,
+    "test_f1_weighted": 0.6385,
+    "val_f1_positive": 0.6719,
+    "test_f1_positive": 0.7172
+  },
+  {
+    "model": "Linear SVM",
+    "task": "binary",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.5989,
+    "val_f1_macro": 0.5819,
+    "val_f1_weighted": 0.5853,
+    "test_acc": 0.6454,
+    "test_f1_macro": 0.6234,
+    "test_f1_weighted": 0.6355,
+    "val_f1_positive": 0.6662,
+    "test_f1_positive": 0.7144
+  },
+  {
+    "model": "SGD Classifier",
+    "task": "binary",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.5413,
+    "val_f1_macro": 0.4965,
+    "val_f1_weighted": 0.5026,
+    "test_acc": 0.5713,
+    "test_f1_macro": 0.4956,
+    "test_f1_weighted": 0.5217,
+    "val_f1_positive": 0.6467,
+    "test_f1_positive": 0.691
+  },
+  {
+    "model": "Multinomial Naive Bayes",
+    "task": "binary",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.6005,
+    "val_f1_macro": 0.592,
+    "val_f1_weighted": 0.5944,
+    "test_acc": 0.6345,
+    "test_f1_macro": 0.6198,
+    "test_f1_weighted": 0.6297,
+    "val_f1_positive": 0.6508,
+    "test_f1_positive": 0.6945
+  },
+  {
+    "model": "Random Forest",
+    "task": "binary",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.6238,
+    "val_f1_macro": 0.6038,
+    "val_f1_weighted": 0.6074,
+    "test_acc": 0.6235,
+    "test_f1_macro": 0.5869,
+    "test_f1_weighted": 0.6033,
+    "val_f1_positive": 0.6929,
+    "test_f1_positive": 0.7099
+  },
+  {
+    "model": "Extra Trees",
+    "task": "binary",
+    "feature_mode": "metadata_only",
+    "val_acc": 0.6176,
+    "val_f1_macro": 0.5951,
+    "val_f1_weighted": 0.5989,
+    "test_acc": 0.6251,
+    "test_f1_macro": 0.5801,
+    "test_f1_weighted": 0.5984,
+    "val_f1_positive": 0.6906,
+    "test_f1_positive": 0.7176
+  }
+]

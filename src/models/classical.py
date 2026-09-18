@@ -55,6 +55,7 @@ def get_baseline_model(name: str, config: Optional[Dict[str, Any]] = None, seed:
             max_iter=cfg.get("max_iter", 1000),
             C=cfg.get("C", 1.0),
             solver=cfg.get("solver", "lbfgs"),
+            class_weight=cfg.get("class_weight"),
             random_state=seed
         )
         return ClassicalModelWrapper("Logistic Regression", estimator)
@@ -64,6 +65,7 @@ def get_baseline_model(name: str, config: Optional[Dict[str, Any]] = None, seed:
             max_iter=cfg.get("max_iter", 2000),
             C=cfg.get("C", 1.0),
             dual="auto",
+            class_weight=cfg.get("class_weight"),
             random_state=seed
         )
         return ClassicalModelWrapper("Linear SVM", estimator)
@@ -73,6 +75,7 @@ def get_baseline_model(name: str, config: Optional[Dict[str, Any]] = None, seed:
             loss=cfg.get("loss", "modified_huber"),
             max_iter=cfg.get("max_iter", 1000),
             alpha=cfg.get("alpha", 0.0001),
+            class_weight=cfg.get("class_weight"),
             random_state=seed
         )
         return ClassicalModelWrapper("SGD Classifier", estimator)
@@ -85,6 +88,8 @@ def get_baseline_model(name: str, config: Optional[Dict[str, Any]] = None, seed:
         estimator = RandomForestClassifier(
             n_estimators=cfg.get("n_estimators", 100),
             max_depth=cfg.get("max_depth", 25),
+            min_samples_leaf=cfg.get("min_samples_leaf", 1),
+            class_weight=cfg.get("class_weight"),
             n_jobs=cfg.get("n_jobs", -1),
             random_state=seed
         )
@@ -94,6 +99,8 @@ def get_baseline_model(name: str, config: Optional[Dict[str, Any]] = None, seed:
         estimator = ExtraTreesClassifier(
             n_estimators=cfg.get("n_estimators", 100),
             max_depth=cfg.get("max_depth", 25),
+            min_samples_leaf=cfg.get("min_samples_leaf", 1),
+            class_weight=cfg.get("class_weight"),
             n_jobs=cfg.get("n_jobs", -1),
             random_state=seed
         )

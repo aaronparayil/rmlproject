@@ -10,9 +10,13 @@ def compute_metrics(
     is_binary: bool = False
 ) -> Dict[str, Any]:
     acc = accuracy_score(y_true, y_pred)
-    avg_type = "binary" if is_binary else "macro"
+
+    # Macro averaging is always computed over all classes, for both the 6-class
+    # and binary tasks, so a column labelled "macro" means the same thing
+    # everywhere. Positive-class scores are reported separately under the
+    # "_positive" suffix rather than overwriting the macro fields.
     p_macro, r_macro, f1_macro, _ = precision_recall_fscore_support(
-        y_true, y_pred, average=avg_type, zero_division=0
+        y_true, y_pred, average="macro", zero_division=0
     )
     p_weighted, r_weighted, f1_weighted, _ = precision_recall_fscore_support(
         y_true, y_pred, average="weighted", zero_division=0
@@ -27,6 +31,14 @@ def compute_metrics(
         "recall_weighted": float(r_weighted),
         "f1_weighted": float(f1_weighted)
     }
+
+    if is_binary:
+        p_pos, r_pos, f1_pos, _ = precision_recall_fscore_support(
+            y_true, y_pred, average="binary", zero_division=0
+        )
+        metrics["precision_positive"] = float(p_pos)
+        metrics["recall_positive"] = float(r_pos)
+        metrics["f1_positive"] = float(f1_pos)
 
     if y_prob is not None:
         try:

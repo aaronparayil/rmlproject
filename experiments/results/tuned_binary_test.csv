@@ -1,0 +1,19 @@
+task,feature_mode,model,variant,char_ngrams,params,val_acc,test_acc,test_f1_macro,test_f1_weighted
+binary,hybrid,multinomial_nb,speaker,True,"{""alpha"": 0.5}",0.6433,0.6726,0.6619,0.6699
+binary,hybrid,logistic_regression,all_meta,True,"{""C"": 0.1, ""class_weight"": ""balanced""}",0.6542,0.6602,0.654,0.6602
+binary,hybrid,linear_svc,all_meta,True,"{""C"": 0.01, ""class_weight"": ""balanced""}",0.6542,0.6563,0.6495,0.656
+binary,hybrid,extra_trees,speaker_subject,True,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 1}",0.6589,0.6539,0.6266,0.6401
+binary,hybrid,random_forest,speaker,True,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 3}",0.6597,0.6493,0.6165,0.6314
+binary,hybrid,sgd_classifier,speaker_subject,True,"{""alpha"": 0.0001, ""loss"": ""log_loss""}",0.6519,0.643,0.6266,0.637
+binary,metadata_only,linear_svc,all_meta,False,"{""C"": 0.01, ""class_weight"": ""balanced""}",0.6363,0.6329,0.6266,0.6331
+binary,metadata_only,logistic_regression,all_meta,False,"{""C"": 0.1, ""class_weight"": ""balanced""}",0.6308,0.6321,0.6261,0.6324
+binary,metadata_only,random_forest,speaker_subject,False,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 1}",0.6254,0.6196,0.5892,0.6041
+binary,metadata_only,extra_trees,speaker_subject,False,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 1}",0.6067,0.6165,0.5885,0.6028
+binary,metadata_only,sgd_classifier,speaker_subject,False,"{""alpha"": 0.001, ""loss"": ""modified_huber""}",0.6168,0.6157,0.5982,0.6094
+binary,metadata_only,multinomial_nb,base,False,"{""alpha"": 0.1}",0.6153,0.6157,0.6006,0.611
+binary,text_only,multinomial_nb,base,True,"{""alpha"": 2.0}",0.6316,0.6267,0.5988,0.6129
+binary,text_only,random_forest,base,True,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 1}",0.6347,0.6259,0.5989,0.6127
+binary,text_only,extra_trees,base,True,"{""n_estimators"": 300, ""max_depth"": null, ""min_samples_leaf"": 1}",0.634,0.6228,0.5944,0.6087
+binary,text_only,logistic_regression,base,True,"{""C"": 0.1, ""class_weight"": ""balanced""}",0.6308,0.6228,0.6191,0.6241
+binary,text_only,sgd_classifier,base,True,"{""alpha"": 0.001, ""loss"": ""log_loss""}",0.6285,0.6228,0.5727,0.5922
+binary,text_only,linear_svc,base,True,"{""C"": 0.01, ""class_weight"": ""balanced""}",0.6379,0.6165,0.6132,0.618

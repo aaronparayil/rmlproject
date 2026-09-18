@@ -5,6 +5,8 @@ data:
     train: train.tsv
     valid: valid.tsv
     test: test.tsv
+
+  # Column order of the raw LIAR TSV files (no header row).
   columns:
   - id
   - label
@@ -20,21 +22,15 @@ data:
   - mostly_true_c
   - pants_fire_c
   - context
+
+  # A row is dropped if any of these is missing. The raw *_c count columns are
+  # deliberately NOT required: they are excluded from every feature set because
+  # they leak the target (see src/features/credit_history.py).
   core_columns:
   - label
   - statement
   - party
-  - barely_true_c
-  - false_c
-  - half_true_c
-  - mostly_true_c
-  - pants_fire_c
-  count_columns:
-  - barely_true_c
-  - false_c
-  - half_true_c
-  - mostly_true_c
-  - pants_fire_c
+
   label_mapping:
     pants-fire: 0
     'false': 1
@@ -42,24 +38,25 @@ data:
     half-true: 3
     mostly-true: 4
     'true': 5
-  binary_threshold:
-    true_labels:
-    - mostly-true
-    - 'true'
-  credibility_weights:
-    barely_true_c: -1.0
-    false_c: -2.0
-    half_true_c: 0.5
-    mostly_true_c: 1.0
-    pants_fire_c: -3.0
-  scale_features:
-  - barely_true_c
-  - false_c
-  - half_true_c
-  - mostly_true_c
-  - pants_fire_c
-  - statement_char_len
-  - statement_word_count
-  - avg_word_length
-  - total_history_count
-  - credibility_score
+
+  # Standard LIAR binary collapse (Wang, 2017): the three more-truthful labels
+  # against the rest.
+  binary_true_labels:
+  - half-true
+  - mostly-true
+  - 'true'
+
+  # Leakage-free speaker credit history, recomputed from training labels only.
+  credit_history:
+    n_splits: 5        # out-of-fold partitions used to encode the train split
+    smoothing: 10.0    # pull toward the global training label prior
+    seed: 42
+    # Ordinal truthfulness weight per label, collapsing the history into a
+    # single expected-credibility scalar in [-3, 2].
+    credibility_weights:
+      pants-fire: -3.0
+      'false': -2.0
+      barely-true: -1.0
+      half-true: 0.5
+      mostly-true: 1.0
+      'true': 2.0
