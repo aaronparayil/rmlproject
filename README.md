@@ -120,7 +120,7 @@ barely-true}` = false-leaning (majority class 0.5666).
 ├── data/
 │   ├── raw/                 # LIAR TSV splits (train, valid, test)
 │   └── processed/           # Cleaned, leakage-free engineered splits
-├── Documentation/           # Research paper PDF and preliminary EDA notebooks
+├── Documentation/           # Preliminary EDA notebooks and figures
 ├── experiments/results/     # Metrics, consolidated tables, leakage analysis
 ├── scripts/
 │   ├── prepare_data.py      # Build processed splits
@@ -162,7 +162,7 @@ classical baselines (Logistic Regression, Linear SVM, SGD, Multinomial NB,
 Random Forest, Extra Trees) across both tasks and three feature modes.
 
 **Not implemented:** the transformer encoder and speaker/subject graph model
-discussed in the accompanying paper. These would require `torch` /
+discussed in `research_paper(latex)/paper.tex`. These would require `torch` /
 `transformers` / `torch-geometric`, none of which are current dependencies. Any
 such extension must consume credit history through
 `LeakFreeCreditHistory`; training on the raw `*_c` columns reproduces the
