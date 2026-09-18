@@ -26,13 +26,20 @@ The effect is large. A Random Forest given **only** the history columns:
 | Variant | Test acc. (6-class) | Macro-F1 |
 |---|---|---|
 | Raw LIAR counts (leaky) | 0.3944 | 0.4056 |
-| Naive "subtract the row's own label" | **0.6594** | 0.6633 |
+| Wang (2017) prescribed fix: subtract own label | **0.6594** | 0.6633 |
 | Leak-free out-of-fold history (this repo) | 0.2284 | 0.2236 |
 | Majority class | 0.2081 | -- |
 
-Note the middle row: the obvious repair makes things *worse*. Because the
-per-speaker vector `B` is constant and therefore memorisable, `B - e_y`
-identifies the label `y` almost deterministically.
+Note the middle row. Subtracting the current label is not a naive guess -- it
+is the correction prescribed by the dataset's own author, who writes that "it is
+important to subtract the current label from the credit history when using this
+meta data vector in prediction experiments" (Wang, 2017). Applied as instructed,
+it makes the leak *worse*: 3318 speakers share only 392 distinct count vectors,
+so `B - e_y` is invertible and recovers the label outright for **36.2%** of test
+rows (mean candidate set 3.61 of 6).
+
+Subtraction is also insufficient on a second, independent ground: it addresses
+self-inclusion only, leaving the counts aggregated over train+valid+test.
 
 ### The fix
 
@@ -46,6 +53,27 @@ identifies the label `y` almost deterministically.
 
 The raw `*_c` columns are retained in the processed CSVs for this analysis but
 are excluded from every model feature set (enforced by a regression test).
+
+## Relation to prior work
+
+**Already documented, and not claimed here.** That the credit-history counts
+include the current statement is stated by Wang (2017) and by the dataset
+README ("the total credit history count, including the current statement").
+Wang additionally prescribes the remedy: subtract the current label. That the
+resulting metadata gains on LIAR are inflated has also been reported before.
+
+**What this repository adds.**
+
+1. The prescribed subtraction does not remove the leak, it enlarges it:
+   history-only 6-class accuracy rises 0.3944 -> 0.6594.
+2. A mechanism for why, by counting rather than by argument: 3318 speakers
+   share only 392 distinct count vectors, so `B - e_y` is invertible and the
+   label is recovered exactly for 36.2% of test rows.
+3. Subtraction addresses only self-inclusion and leaves the counts aggregated
+   across train+valid+test, so it is insufficient on a second, independent
+   ground.
+4. A construction that is leakage-free on both counts, plus a corrected
+   baseline grid over two tasks, three feature modes and six models.
 
 ## Results
 

@@ -8,7 +8,8 @@ Produces the evidence behind the leakage-free redesign in
 2. **Self-inclusion.** Do single-statement speakers carry a one-hot encoding of
    their own label?
 3. **Effect size.** How much test accuracy does the leak manufacture, and what
-   happens under the naive "subtract the row's own label" repair?
+   happens under the correction Wang (2017) prescribes, i.e. subtracting the
+   current statement's own label from its speaker's history?
 
 Run:  python scripts/leakage_analysis.py
 """
@@ -108,7 +109,7 @@ def main() -> None:
     }
 
     # -- 3. effect size ----------------------------------------------------
-    def naive_repair(df: pd.DataFrame) -> pd.DataFrame:
+    def prescribed_repair(df: pd.DataFrame) -> pd.DataFrame:
         out = df.copy()
         for label, col in LABEL_TO_COUNT.items():
             mask = out.label == label
@@ -119,8 +120,8 @@ def main() -> None:
     variants["leaky_raw_counts"] = _score(
         _rf(args.seed), train[COUNT_COLS], train.y, test[COUNT_COLS], test.y
     )
-    tr_n, te_n = naive_repair(train), naive_repair(test)
-    variants["naive_subtract_own_label"] = _score(
+    tr_n, te_n = prescribed_repair(train), prescribed_repair(test)
+    variants["prescribed_subtract_own_label"] = _score(
         _rf(args.seed), tr_n[COUNT_COLS], tr_n.y, te_n[COUNT_COLS], te_n.y
     )
     ch = LeakFreeCreditHistory(seed=args.seed).fit(train)
@@ -134,7 +135,7 @@ def main() -> None:
         "test_f1_macro": None,
     }
 
-    # -- 4. why the naive repair fails -------------------------------------
+    # -- 4. why the prescribed repair fails -------------------------------------
     # The repaired vector b' = B - e_y sits one unit below its speaker's own
     # (constant, memorisable) vector B. Any label c whose re-addition lands on
     # an observed vector is a candidate; when exactly one does, the label is
@@ -153,7 +154,7 @@ def main() -> None:
         return n + int((delta == 0).all(axis=1).any())  # the extra one is 'true'
 
     sizes = test.apply(candidate_count, axis=1)
-    report["naive_repair_decodability"] = {
+    report["prescribed_repair_decodability"] = {
         "distinct_count_vectors": int(len(observed)),
         "speakers": int(full.speaker.nunique()),
         "test_rows": int(len(test)),
@@ -178,10 +179,10 @@ def main() -> None:
           f"{si['encoding_own_label_as_one_hot']}/{si['single_statement_speakers_non_true']}")
     print(f"'true' single-statement speakers with all-zero counts      : "
           f"{si['true_speakers_with_zero_counts']}/{si['single_statement_speakers_true']}")
-    dec = report["naive_repair_decodability"]
+    dec = report["prescribed_repair_decodability"]
     print(f"Distinct count vectors across {dec['speakers']} speakers            : "
           f"{dec['distinct_count_vectors']}")
-    print(f"Test rows whose label the naive repair recovers exactly    : "
+    print(f"Test rows whose label the prescribed repair recovers exactly: "
           f"{dec['label_recovered_exactly']}/{dec['test_rows']} "
           f"({dec['share_recovered_exactly']*100:.1f}%), mean candidate set "
           f"{dec['mean_candidate_set_size']}/6")

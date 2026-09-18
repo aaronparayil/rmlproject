@@ -11,7 +11,7 @@
     "single_statement_speakers_true": 355,
     "true_speakers_with_zero_counts": 355
   },
-  "naive_repair_decodability": {
+  "prescribed_repair_decodability": {
     "distinct_count_vectors": 392,
     "speakers": 3318,
     "test_rows": 1283,
@@ -24,7 +24,7 @@
       "test_acc": 0.3944,
       "test_f1_macro": 0.4056
     },
-    "naive_subtract_own_label": {
+    "prescribed_subtract_own_label": {
       "test_acc": 0.6594,
       "test_f1_macro": 0.6633
     },

@@ -11,9 +11,17 @@ Two distinct leaks follow. The current statement is counted in its own features
 (1689/1701 single-statement speakers are a one-hot encoding of their own label),
 and test-set labels are visible at training time through the shared aggregate.
 
-Naively subtracting the row's own label does **not** repair this: because the
-per-speaker vector ``B`` is constant and therefore memorisable, ``B - e_y``
-identifies ``y`` almost deterministically and inflates scores further.
+The self-inclusion is documented: Wang (2017), who released LIAR, writes that
+"since this vector also includes the count for the current statement, it is
+important to subtract the current label from the credit history when using this
+meta data vector in prediction experiments."
+
+That prescribed correction does **not** repair the leak -- it widens it. Because
+the per-speaker vector ``B`` is constant and therefore memorisable (3318
+speakers share only 392 distinct vectors), ``B - e_y`` identifies ``y``
+outright for 36.2% of test rows, and history-only 6-class accuracy rises from
+0.3944 to 0.6594. Subtraction also leaves the second leak untouched, since the
+counts still aggregate over the held-out splits.
 
 This module instead recomputes the history from scratch under two rules:
 

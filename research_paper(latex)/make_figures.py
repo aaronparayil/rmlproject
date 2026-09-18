@@ -193,7 +193,7 @@ def fig_leakage():
     with open(os.path.join(ROOT, "experiments", "results", "leakage_analysis.json")) as fh:
         rep = json.load(fh)["history_only_rf_6class"]
     names = ["raw LIAR\ncounts", "naive\nrepair", "leak-free\nOOF history", "majority\nclass"]
-    keys = ["leaky_raw_counts", "naive_subtract_own_label", "leak_free_oof_history",
+    keys = ["leaky_raw_counts", "prescribed_subtract_own_label", "leak_free_oof_history",
             "majority_class"]
     vals = [rep[k]["test_acc"] for k in keys]
     fig, ax = plt.subplots(figsize=(COL, 1.95))
