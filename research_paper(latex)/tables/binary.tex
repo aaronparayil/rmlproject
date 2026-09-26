@@ -1,0 +1,23 @@
+\begin{table}[t]
+\caption{Binary test results for the default configuration, by model and
+feature mode}
+\label{tab:binary}
+\centering
+\footnotesize
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{Accuracy} & \multicolumn{3}{c}{Macro-F1} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Model & Text & Meta & Hyb. & Text & Meta & Hyb. \\
+\midrule
+Multinomial NB      & .6087 & .6345 & \best{.6610} & .5797 & .6198 & \best{.6487} \\
+Logistic regression & .6142 & .6485 & .6477 & .5906 & .6264 & .6307 \\
+Linear SVM          & .6041 & .6454 & .6290 & .5910 & .6234 & .6191 \\
+Random forest       & .5939 & .6235 & .6306 & .4783 & .5869 & .5719 \\
+Extra trees         & .5931 & .6251 & .6243 & .4532 & .5801 & .5452 \\
+SGD                 & .6017 & .5713 & .6228 & .5892 & .4956 & .6180 \\
+\midrule
+Majority class      & \multicolumn{3}{c}{.5666} & \multicolumn{3}{c}{---} \\
+\bottomrule
+\end{tabular}
+\end{table}

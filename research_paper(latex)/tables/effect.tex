@@ -1,0 +1,18 @@
+\begin{table}[t]
+\caption{History-only random forest on the six-class task, under four
+constructions of the same underlying signal}
+\label{tab:effect}
+\centering
+\footnotesize
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Construction & Test acc. & Macro-F1 \\
+\midrule
+Raw LIAR counts (as shipped)   & 0.3944 & 0.4056 \\
+Prescribed fix $\bs{b}-\bs{e}_y$\rlap{$^\ast$} & 0.6594 & 0.6633 \\
+Leak-free out-of-fold history  & 0.2284 & 0.2236 \\
+\midrule
+Majority class                 & 0.2081 & --- \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,22 @@
+\begin{table}[t]
+\caption{Best configuration per feature mode, selected on validation and scored
+once on test}
+\label{tab:tuned}
+\centering
+\footnotesize
+\begin{tabular}{@{}llllcccc@{}}
+\toprule
+Task & Mode & Model & Var. & Ch. & Val & Test & F1$_M$ \\
+\midrule
+\multirow{3}{*}{6-cl.}
+ & Text   & Extra trees    & base     & y & .2741 & .2705 & .2209 \\
+ & Meta   & Linear SVM     & spk+sbj  & n & .2796 & .2744 & .2599 \\
+ & Hyb.   & SGD            & spk      & y & .2975 & \best{.2845} & .2763 \\
+\midrule
+\multirow{3}{*}{Bin.}
+ & Text   & Multinom.\ NB  & base     & y & .6316 & .6267 & .5988 \\
+ & Meta   & Linear SVM     & all      & n & .6363 & .6329 & .6266 \\
+ & Hyb.   & Multinom.\ NB  & spk      & y & .6433 & \best{.6726} & .6619 \\
+\bottomrule
+\end{tabular}
+\end{table}

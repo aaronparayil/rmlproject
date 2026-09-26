@@ -1,0 +1,22 @@
+\begin{table}[t]
+\caption{Fields of the LIAR corpus, measured over all 12\,836 rows}
+\label{tab:fields}
+\centering
+\footnotesize
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Field & Type & Distinct & Missing \\
+\midrule
+\texttt{id}            & identifier   & 12\,836 & 0.00\% \\
+\texttt{label}         & ordinal, 6 levels & 6  & 0.00\% \\
+\texttt{statement}     & free text    & 12\,810 & 0.00\% \\
+\texttt{subject}       & multi-label tags & 144 tags & 0.00\% \\
+\texttt{speaker}       & categorical  & 3\,318 & 0.00\% \\
+\texttt{job\_title}    & categorical  & 1\,348 & 27.86\% \\
+\texttt{state}         & categorical  & 70     & 21.46\% \\
+\texttt{party}         & categorical  & 24     & 0.00\% \\
+\texttt{context}       & categorical  & 5\,080 & 1.00\% \\
+\texttt{*\_c} (five columns) & integer counts & 392 vectors & 0.00\% \\
+\bottomrule
+\end{tabular}
+\end{table}

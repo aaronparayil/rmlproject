@@ -1,0 +1,26 @@
+%% Abstract body only -- no heading, no size command. Included by paper.tex.
+The LIAR benchmark includes five ``credit history'' columns per speaker, but the
+publication describing the data set notes that these include the statement to be
+predicted, thus emphasizing that these should only be used after the current
+annotation has been subtracted from it. We provide the evidence for the cost of
+following these instructions. Forests fed with only those five columns from the
+data set achieve 0.394 accuracy at the test time in the six-way classification
+task, but the amounts achieved in the experiment when highlighting the value of
+those columns according to what was stated in the paper when subtracting the
+current label are equal to 0.659 against the majority class accuracy of 0.208.
+Our proof comes from the counting rather than reasoning related to the algorithm
+as to how it works. There are 3\,318 speakers who share 392 distinct counting
+vectors in total, meaning that the vector used for this subtraction can be
+treated as a deviation from a landmark that can be remembered by the classifier
+and that this vector indicates the actual label as it retrieves the same value
+for 36.2\% of the test rows. Subtraction is insufficient for the independent
+reasons since the counts in question may be correlated as they are aggregated
+across training, validation and test samples for 2\,846 of the defined number of
+speakers. We then reconstruct speaker history according to three principles as
+far as the training labels, out-of-fold coding and prior smoothing are
+concerned, thus demonstrating that the model returns 0.228 score according to
+the history approach, which is better than the primary class score. Finally, we
+test six classifiers in a set of experiments under a protocol that selects on
+validation and scores on testing once; the best configurations in this case
+return 0.285 for six-class and 0.673 for binary accuracy, and the hybrid
+configuration has performed better than both single modalities in cases.

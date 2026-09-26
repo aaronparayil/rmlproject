@@ -1,0 +1,25 @@
+\begin{table}[t]
+\caption{Feature blocks and their dimensionality under the default
+configuration}
+\label{tab:blocks}
+\centering
+\footnotesize
+\begin{tabular}{@{}llr@{}}
+\toprule
+Block & Construction & Dim. \\
+\midrule
+Word TF-IDF   & 1--2 grams, sublinear tf, & 5\,000 \\
+              & \;\;min\_df 2, max\_df 0.95, & \\
+              & \;\;English stop words & \\
+Char TF-IDF   & \texttt{char\_wb} 3--5 grams, & 20\,000\rlap{$^\dagger$} \\
+              & \;\;min\_df 3 & \\
+Numeric       & 6 history proportions, cred., & 12 \\
+              & \;\;$\log$ support, unseen flag, & \\
+              & \;\;3 text statistics ($z$-scored) & \\
+One-hot       & \texttt{party} (23), \texttt{state} (70) & 93 \\
+Subject       & TF-IDF over comma-split tags & 140 \\
+\midrule
+\multicolumn{2}{@{}l}{Total, hybrid mode (default)} & 5\,245 \\
+\bottomrule
+\end{tabular}
+\end{table}

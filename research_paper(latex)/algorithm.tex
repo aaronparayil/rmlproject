@@ -1,0 +1,30 @@
+\begin{algorithm}[t]
+\caption{Leakage-free speaker credit history}
+\label{alg:history}
+\begin{algorithmic}[1]
+\Require training split $\mathcal{D}_{\text{tr}}$, target split $\mathcal{D}$,
+ folds $K$, smoothing $m$
+\State $\hat{\bs{p}} \gets$ label distribution of $\mathcal{D}_{\text{tr}}$
+\State $\bs{n}_s \gets$ label histogram of speaker $s$ over
+ $\mathcal{D}_{\text{tr}}$, for all $s$
+\If{$\mathcal{D} = \mathcal{D}_{\text{tr}}$}
+  \State assign stratified folds $F_1,\dots,F_K$ over $\mathcal{D}_{\text{tr}}$
+  \For{$k = 1$ \textbf{to} $K$}
+    \State $\bs{n}^{(k)}_s \gets$ histogram of $s$ restricted to $F_k$
+    \For{$i \in F_k$}
+      \State $\bs{c}_i \gets \max(\bs{n}_{s(i)} - \bs{n}^{(k)}_{s(i)}, \bs{0})$
+    \EndFor
+  \EndFor
+\Else
+  \For{$i \in \mathcal{D}$}
+    \State $\bs{c}_i \gets \bs{n}_{s(i)}$ \quad ($\bs{0}$ if $s(i)$ unseen)
+  \EndFor
+\EndIf
+\For{$i \in \mathcal{D}$}
+  \State $T_i \gets \|\bs{c}_i\|_1$
+  \State $\bs{\pi}_i \gets (\bs{c}_i + m\hat{\bs{p}})/(T_i + m)$
+  \State emit $\bs{\pi}_i$, $\log(1+T_i)$, $\mathbf{1}[T_i = 0]$,
+   $\bs{\pi}_i^{\!\top}\bs{w}$
+\EndFor
+\end{algorithmic}
+\end{algorithm}

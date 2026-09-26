@@ -1,0 +1,153 @@
+%% ---------------------------------------------------------------------------
+%%  REVIEW COPY / PRE-SUBMISSION DRAFT
+%%
+%%  Same text as paper.tex -- both pull body.tex and refs.tex -- but laid out
+%%  for reading and annotation: single column, 1.5 spacing, numbered lines,
+%%  wide right margin for comments.
+%%
+%%  Edit the manuscript text in body.tex, NOT here and not in paper.tex.
+%%
+%%  Compile with:  pdflatex paper-draft   (three times, for cross-references)
+%% ---------------------------------------------------------------------------
+\documentclass[11pt,oneside,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb}
+\usepackage{newtxtext,newtxmath}
+
+%% Wide right margin: room to write comments next to the text.
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=2.6cm,right=4.6cm,
+            marginparwidth=3.4cm]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{fancyhdr}
+\usepackage{cite}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{xcolor}
+\usepackage{etoolbox}
+
+%% ---- line numbers for annotation -------------------------------------------
+\usepackage{lineno}
+%% lineno loses display equations unless the amsmath environments are patched.
+\newcommand*\patchAmsMathEnvironmentForLineno[1]{%
+  \expandafter\let\csname old#1\expandafter\endcsname\csname #1\endcsname
+  \expandafter\let\csname oldend#1\expandafter\endcsname\csname end#1\endcsname
+  \renewenvironment{#1}%
+     {\linenomath\csname old#1\endcsname}%
+     {\csname oldend#1\endcsname\endlinenomath}}
+\newcommand*\patchBothAmsMathEnvironmentsForLineno[1]{%
+  \patchAmsMathEnvironmentForLineno{#1}%
+  \patchAmsMathEnvironmentForLineno{#1*}}
+\AtBeginDocument{%
+  \patchBothAmsMathEnvironmentsForLineno{equation}%
+  \patchBothAmsMathEnvironmentsForLineno{align}%
+  \patchBothAmsMathEnvironmentsForLineno{gather}%
+  \patchBothAmsMathEnvironmentsForLineno{multline}%
+}
+
+%% ---- captions (same wording as the submission layout) ----------------------
+\DeclareCaptionLabelFormat{jcstfig}{\textbf{#1#2}}
+\DeclareCaptionLabelFormat{jcsttab}{#1~#2}
+\captionsetup[figure]{labelformat=jcstfig,labelsep=period,font=small,
+                      justification=raggedright,singlelinecheck=false}
+\captionsetup[table]{labelformat=jcsttab,labelsep=period,font=small,
+                     justification=centering,singlelinecheck=false}
+\renewcommand{\figurename}{Fig.}
+\renewcommand{\tablename}{Table}
+
+%% ---- DRAFT marking ---------------------------------------------------------
+\newcommand{\draftversion}{draft 1}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancyhead[L]{\footnotesize\bfseries DRAFT \normalfont\footnotesize
+              --- not for circulation or submission}
+\fancyhead[R]{\footnotesize\thepage}
+\fancyfoot[L]{\footnotesize Parayil --- Speaker credit history leaks the target
+              in LIAR --- \draftversion, \today}
+
+%% ---- theorem-like environments ---------------------------------------------
+\newtheorem{definition}{Definition}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+
+%% ---- spacing ---------------------------------------------------------------
+\onehalfspacing
+\setlength{\parindent}{1.2em}
+\setlist[itemize]{leftmargin=1.4em,itemsep=2pt,topsep=4pt,parsep=0pt}
+\setlist[enumerate]{leftmargin=1.7em,itemsep=2pt,topsep=4pt,parsep=0pt}
+\renewcommand{\arraystretch}{1.1}
+\setlength{\tabcolsep}{5pt}
+\raggedbottom
+%% Runs of \texttt{} filenames and inline math cannot hyphenate; let TeX stretch
+%% the interword glue on those lines rather than overrun the wider measure.
+\setlength{\emergencystretch}{3em}
+
+\newcommand{\bs}[1]{\boldsymbol{#1}}
+\newcommand{\best}[1]{\textbf{#1}}
+
+%% ---- figure widths, scaled for the single-column measure -------------------
+\newcommand{\figfull}{0.62\textwidth}
+\newcommand{\figmed}{0.58\textwidth}
+\newcommand{\fignarrow}{0.42\textwidth}
+\newcommand{\figwide}{0.88\textwidth}
+
+%% Tables and floats are \footnotesize in the body; keep them single-spaced so
+%% they stay compact next to 1.5-spaced running text.
+\AtBeginEnvironment{table}{\singlespacing}
+\AtBeginEnvironment{table*}{\singlespacing}
+\AtBeginEnvironment{algorithm}{\singlespacing}
+\AtBeginEnvironment{thebibliography}{\singlespacing}
+
+\hyphenation{mis-in-for-ma-tion clas-si-fi-ca-tion PolitiFact}
+
+\begin{document}
+\linenumbers
+
+%% ===========================================================================
+%%  FRONT MATTER
+%% ===========================================================================
+\begin{center}
+{\large\bfseries Speaker Credit History Leaks the Target in LIAR:\\[3pt]
+ A Leakage-Free Benchmark for Fine-Grained Fake News Detection}\\[14pt]
+{\normalsize Aaron Koshy Parayil\quad and\quad Krishna Presannakumar}\\[5pt]
+{\small\itshape Department of Computer Science, Christ University,
+ Yeshwanthpur Campus, Bengaluru 560073, India}\\[3pt]
+{\small E-mail: aaron12parayil@gmail.com}\\[6pt]
+{\footnotesize\bfseries \draftversion\ --- \today}
+\end{center}
+
+
+\vspace{10pt}
+{\singlespacing\small
+\noindent\textbf{Abstract.}
+\input{abstract}
+
+\vspace{6pt}
+\noindent\textbf{Keywords:} credit history, data leakage, fake news detection,
+LIAR dataset, text classification
+}
+
+\vspace{10pt}
+\hrule
+\vspace{6pt}
+
+%% ---------------------------------------------------------------------------
+%%  Shared manuscript text
+%% ---------------------------------------------------------------------------
+\input{body}
+
+%% ===========================================================================
+%%  REFERENCES
+%% ===========================================================================
+\input{refs}
+
+\end{document}

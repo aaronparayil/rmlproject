@@ -31,6 +31,9 @@ data/processed/liar_full_processed.csv
 # search traces, which are large, noisy and regenerable via tune_baselines.py
 experiments/results/tuning_*.json
 
+# Packaged bundles of the paper directory (regenerable)
+*.zip
+
 # LaTeX build artifacts
 *.aux
 *.bbl

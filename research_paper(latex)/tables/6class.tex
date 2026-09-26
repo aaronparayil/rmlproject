@@ -1,0 +1,23 @@
+\begin{table}[t]
+\caption{Six-class test results for the default configuration, by model and
+feature mode}
+\label{tab:6class}
+\centering
+\footnotesize
+\begin{tabular}{@{}lcccccc@{}}
+\toprule
+& \multicolumn{3}{c}{Accuracy} & \multicolumn{3}{c}{Macro-F1} \\
+\cmidrule(lr){2-4}\cmidrule(lr){5-7}
+Model & Text & Meta & Hyb. & Text & Meta & Hyb. \\
+\midrule
+Multinomial NB      & .2393 & .2362 & \best{.2837} & .1984 & .2351 & \best{.2773} \\
+Logistic regression & .2432 & .2751 & .2611 & .2151 & .2704 & .2557 \\
+Linear SVM          & .2369 & .2712 & .2424 & .2260 & .2663 & .2425 \\
+Extra trees         & .2175 & .2416 & .2588 & .1335 & .2329 & .2186 \\
+Random forest       & .2065 & .2440 & .2502 & .1327 & .2349 & .2106 \\
+SGD                 & .2354 & .2229 & .2330 & .2235 & .2204 & .2320 \\
+\midrule
+Majority class      & \multicolumn{3}{c}{.2081} & \multicolumn{3}{c}{---} \\
+\bottomrule
+\end{tabular}
+\end{table}
